@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Papers</title>
+</head>
+<body>
+    <h2>Search Research Papers</h2>
+
+    <form method="POST">
+        <input type="text" name="keyword" placeholder="Enter topic..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+
+    {% for paper in papers %}
+        <p>
+            {{ paper[1] }} 
+            <a href="/uploads/{{ paper[2] }}" target="_blank">View</a>
+        </p>
+    {% endfor %}
+
+</body>
+</html>

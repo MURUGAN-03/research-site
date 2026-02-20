@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h2>Pending Papers</h2>
+
+    {% for paper in papers %}
+        <p>
+            {{ paper[1] }}
+            <a href="/approve/{{ paper[0] }}">Approve</a>
+        </p>
+    {% endfor %}
+
+</body>
+</html>
