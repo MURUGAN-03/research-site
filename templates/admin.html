@@ -1,10 +1,14 @@
+
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Search Research Papers</h1>
+<h2>Pending Papers (Admin)</h2>
 
-<form method="POST">
-    <input type="text" name="keyword" placeholder="Enter topic...">
-    <button type="submit">Search</button>
-</form>
+{% for paper in papers %}
+    <p>
+        <strong>{{ paper[1] }}</strong>
+        <a href="/approve/{{ paper[0] }}">Approve</a>
+    </p>
+{% endfor %}
+
 {% endblock %}
