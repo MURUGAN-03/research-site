@@ -1,30 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Papers</title>
-</head>
-<body>
-    <h2>Search Research Papers</h2>
+{% extends "base.html" %}
 
-    <form method="POST">
-        <input type="text" name="keyword" placeholder="Enter topic..." required>
-        <button type="submit">Search</button>
-    </form>
+{% block content %}
+<h1>Search Research Papers</h1>
 
-    <hr>
-
-    {% for paper in papers %}
-        <p>
-            {{ paper[1] }} 
-            <a href="/uploads/{{ paper[2] }}" target="_blank">View</a>
-        </p>
-    {% endfor %}
-
-</body><div style="background-color:#333; padding:10px;">
-    <a href="/" style="color:white; margin-right:15px;">Home</a>
-    <a href="/login" style="color:white; margin-right:15px;">Login</a>
-    <a href="/register" style="color:white; margin-right:15px;">Register</a>
-    <a href="/upload" style="color:white; margin-right:15px;">Upload</a>
-    <a href="/admin" style="color:white;">Admin</a>
-</div>
-</html>
+<form method="POST">
+    <input type="text" name="keyword" placeholder="Enter topic...">
+    <button type="submit">Search</button>
+</form>
+{% endblock %}
