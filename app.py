@@ -17,14 +17,14 @@ def init_db():
     cur = conn.cursor()
 
     cur.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            email TEXT UNIQUE,
-            institution TEXT,
-            password TEXT
-        )
-    """)
-
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT UNIQUE,
+        institution TEXT,
+        password TEXT,
+        role TEXT DEFAULT 'user'
+    )
+""")
     cur.execute("""
         CREATE TABLE IF NOT EXISTS papers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,10 +73,12 @@ def register():
 
         conn = sqlite3.connect("database.db")
         cur = conn.cursor()
+
         cur.execute(
-            "INSERT INTO users (email, institution, password) VALUES (?, ?, ?)",
-            (email, institution, password)
+            "INSERT INTO users (email, institution, password, role) VALUES (?, ?, ?, ?)",
+            (email, institution, password, "user")
         )
+
         conn.commit()
         conn.close()
 
